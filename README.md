@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Extended Game Tracker Site using react and redux toolkit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started with Create React App
+npx create-react-app my-app
 
 ## Available Scripts
 
