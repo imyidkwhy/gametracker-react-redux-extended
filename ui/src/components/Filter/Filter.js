@@ -1,13 +1,17 @@
 import { useDispatch } from 'react-redux';
 import './Filter.css'
-import { setTitleFilter, selectTitleFilter, resetFilter } from '../../redux/slices/filterSlice';
+import { setTitleFilter, selectTitleFilter, resetFilter, setPriceFilter, selectPriceFilter } from '../../redux/slices/filterSlice';
 import { useSelector } from 'react-redux';
 const Filter = () => {
     const dispatch = useDispatch()
     const titleFilter = useSelector(selectTitleFilter)
+    const priceFilter = useSelector(selectPriceFilter)
 
     const handleTitleFilterChange = (e) =>{
         dispatch(setTitleFilter(e.target.value))
+    }
+    const handlePriceFilterChange = (e) =>{
+        dispatch(setPriceFilter(e.target.value))
     }
     const handleResetFilter = () =>{
         dispatch(resetFilter())
@@ -18,6 +22,10 @@ const Filter = () => {
 
             <div className='filter-group'>
                 <input type='text' value={titleFilter} placeholder='filter by text...' onChange={handleTitleFilterChange}/>
+           
+            </div>
+            <div className='filter-group'>
+                <input type='text' value={priceFilter} placeholder='filter by price...' onChange={handlePriceFilterChange}/>
            
             </div>
             <button onClick={handleResetFilter}>Reset</button>
