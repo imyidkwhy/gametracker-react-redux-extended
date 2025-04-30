@@ -48,7 +48,7 @@ const GameList = () =>{
                  
                 {filteredGames.map((game, i) => (
                     <li key={game.id}> 
-                        <div className='game-info'> {++i}. {game.title}  <strong>{Math.ceil(game.price) + '$' } </strong></div>
+                        <div className='game-info'> {++i}. {game.title}  <strong>{Math.ceil(game.price) + 1}$ </strong></div>
                         <span onClick={() => handleAddFavorite(game.id)}>
                         {
                             game.isFavorite ? (
