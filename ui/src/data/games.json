@@ -1,14 +1,4 @@
-[
-     
-    {
-      "title": "Dota 2",
-      "price": "Free to Play"
-    },
-    {
-      "title": "Apex Legends",
-      "price": "Free to Play"
-    },
-  
+[ 
     {
       "title": "Grand Theft Auto V",
       "price": "29.99"
@@ -86,10 +76,6 @@
       "price": "49.99"
     },
     {
-      "title": "Fall Guys: Ultimate Knockout",
-      "price": "Free to Play"
-    },
-    {
       "title": "Rust",
       "price": "39.99"
     },
@@ -165,10 +151,7 @@
       "title": "Subnautica",
       "price": "29.99"
     },
-    {
-      "title": "Rocket League",
-      "price": "Free to Play"
-    },
+ 
     {
       "title": "Sea of Thieves",
       "price": "39.99"
