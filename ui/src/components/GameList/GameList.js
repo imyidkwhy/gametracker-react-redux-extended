@@ -3,19 +3,20 @@ import { useSelector } from 'react-redux'
 import './GameList.css'
 import { useDispatch } from 'react-redux'
 import { deleteGame, addFavorite, deleteAllgames } from '../../redux/games/actionCreators'
-import { selectPriceFilter, selectTitleFilter } from "../../redux/slices/filterSlice";
+import { selectOnlyFavoriteFilter, selectPriceFilter, selectTitleFilter, setOnlyFavoriteFilter } from "../../redux/slices/filterSlice";
 const GameList = () =>{
     const games = useSelector((state) => state.games)
     const titleFilter = useSelector(selectTitleFilter)
     const priceFilter = useSelector(selectPriceFilter)
+    const onlyFavoriteFilter = useSelector(selectOnlyFavoriteFilter)
     const dispatch = useDispatch()
     const handleDeleteGame = (id) =>{
-        dispatch(deleteGame(id))
-        
+        dispatch(deleteGame(id))        
     }
     const handleAddFavorite = (id) =>{
         dispatch(addFavorite(id))
     }
+    
     const handleDeleteAllGames = (id) =>{
         dispatch(deleteAllgames(id))
     }
@@ -26,8 +27,8 @@ const GameList = () =>{
         const matchesPrice = game.price
             .toLowerCase()
             .includes(priceFilter.toLowerCase());
-        
-        return matchesTitle && matchesPrice
+        const matchesFavorite = onlyFavoriteFilter ? game.isFavorite : true
+        return matchesTitle && matchesPrice && matchesFavorite
     });
 
     return (
@@ -48,7 +49,7 @@ const GameList = () =>{
                  
                 {filteredGames.map((game, i) => (
                     <li key={game.id}> 
-                        <div className='game-info'> {++i}. {game.title}  <strong>{Math.ceil(game.price) + 1}$ </strong></div>
+                        <div className='game-info'> {++i}. {game.title}  <strong>{game.price}$ </strong></div>
                         <span onClick={() => handleAddFavorite(game.id)}>
                         {
                             game.isFavorite ? (
