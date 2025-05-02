@@ -2,8 +2,8 @@ import { BsBookmarkStarFill, BsBookmarkStar } from "react-icons/bs";
 import { useSelector } from 'react-redux'
 import './GameList.css'
 import { useDispatch } from 'react-redux'
-import { deleteGame, addFavorite, deleteAllgames } from '../../redux/games/actionCreators'
 import { selectOnlyFavoriteFilter, selectPriceFilter, selectTitleFilter, setOnlyFavoriteFilter } from "../../redux/slices/filterSlice";
+import { deleteGame, addFavorite, clearAllGames } from '../../redux/slices/gamesSlice'
 const GameList = () =>{
     const games = useSelector((state) => state.games)
     const titleFilter = useSelector(selectTitleFilter)
@@ -18,14 +18,15 @@ const GameList = () =>{
     }
     
     const handleDeleteAllGames = (id) =>{
-        dispatch(deleteAllgames(id))
+        dispatch(clearAllGames(id))
     }
     const filteredGames = games.filter((game) => {
         const matchesTitle = game.title
             .toLowerCase()
             .includes(titleFilter.toLowerCase());
-const gamePriceString = String(game.price);
-  const matchesPrice = gamePriceString
+            
+    const gamePriceString = String(game.price);
+    const matchesPrice = gamePriceString
     .includes(priceFilter)
         const matchesFavorite = onlyFavoriteFilter ? game.isFavorite : true
         return matchesTitle && matchesPrice && matchesFavorite

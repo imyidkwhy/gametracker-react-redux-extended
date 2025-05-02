@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
-import gamesReducer from './games/reducer'
+import gamesSlice from './slices/gamesSlice'
 import filterSlice from './slices/filterSlice'
 
 const store = configureStore ({
     reducer:{
-        games: gamesReducer,
+        games: gamesSlice,
         filter: filterSlice,
+
     }
 })
 export default store
+
+
+
+

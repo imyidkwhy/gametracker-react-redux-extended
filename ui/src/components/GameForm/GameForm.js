@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux'
-import { addGame, deleteGame } from '../../redux/games/actionCreators'
+
 import gamesData from '../../data/games.json'
 import './GameForm.css'
 import createGameWithId from '../../utils/createGameWithId';
+import { addGame, deleteGame } from '../../redux/slices/gamesSlice';
 const GameForm = () =>{
     const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
